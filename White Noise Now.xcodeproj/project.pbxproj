@@ -14,6 +14,7 @@
 		E2564F222D682A4D00103AAC /* White_Noise_NowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F212D682A4D00103AAC /* White_Noise_NowTests.swift */; };
 		E2564F2C2D682A4D00103AAC /* White_Noise_NowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F2B2D682A4D00103AAC /* White_Noise_NowUITests.swift */; };
 		E2564F2E2D682A4D00103AAC /* White_Noise_NowUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F2D2D682A4D00103AAC /* White_Noise_NowUITestsLaunchTests.swift */; };
+		E2D601822D699EA400D67E73 /* whitenoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2D601812D699EA400D67E73 /* whitenoise.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		E2564F272D682A4D00103AAC /* White Noise NowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "White Noise NowUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2564F2B2D682A4D00103AAC /* White_Noise_NowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = White_Noise_NowUITests.swift; sourceTree = "<group>"; };
 		E2564F2D2D682A4D00103AAC /* White_Noise_NowUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = White_Noise_NowUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E2D601812D699EA400D67E73 /* whitenoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whitenoise.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				E2564F0F2D682A4B00103AAC /* White Noise Now */,
+				E2D601812D699EA400D67E73 /* whitenoise.wav */,
 				E2564F202D682A4D00103AAC /* White Noise NowTests */,
 				E2564F2A2D682A4D00103AAC /* White Noise NowUITests */,
 				E2564F0E2D682A4B00103AAC /* Products */,
@@ -233,6 +236,7 @@
 			files = (
 				E2564F182D682A4D00103AAC /* Preview Assets.xcassets in Resources */,
 				E2564F152D682A4D00103AAC /* Assets.xcassets in Resources */,
+				E2D601822D699EA400D67E73 /* whitenoise.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

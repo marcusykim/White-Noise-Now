@@ -42,7 +42,10 @@ struct ContentView: View {
             player = try AVAudioPlayer(contentsOf: url)
             player?.numberOfLoops = -1
             player?.prepareToPlay()
+            
+            print("noise prepared")
         } catch {
+            
             print("Error loading audio: \(error)")
         }
     }
@@ -61,3 +64,4 @@ struct StaticView: View {
         .animation(.linear(duration: 0.1).repeatForever(autoreverses: true), value: UUID())
     }
 }
+
