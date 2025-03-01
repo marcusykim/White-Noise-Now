@@ -2,17 +2,18 @@ import SwiftUI
 import AVFoundation
 
 struct ContentView: View {
-    @State private var isNoiseOn = false
+    @State private var isNoiseOn = true
     @State private var player: AVAudioPlayer?
     
     var body: some View {
+        
         ZStack {
             if isNoiseOn {
                 StaticView()
                     .transition(.opacity.combined(with: .scale(scale: 1.2)).animation(.easeInOut(duration: 0.2)))
             } else {
                 Color.black
-                    .overlay(Text("Tap").foregroundColor(.white).font(.largeTitle))
+                    //.overlay(Text("Tap").foregroundColor(.white).font(.largeTitle))
                     .transition(.opacity.animation(.easeInOut(duration: 0.2)))
             }
         }
@@ -22,6 +23,7 @@ struct ContentView: View {
         }
         .onAppear {
             prepareNoise()
+            player?.play()
         }
     }
     
