@@ -1,69 +1,71 @@
 import SwiftUI
-import AVFoundation
 
 struct ContentView: View {
-    @State private var isNoiseOn = true
-    @State private var player: AVAudioPlayer?
-    
+    @State private var isNoiseOn = true // Start with noise ON
+    @State private var noiseTrigger = UUID() // Forces refresh
+    @State private var timer: Timer?
+    private var noiseGenerator = WhiteNoiseGenerator() // Keeps noise running
+
     var body: some View {
-        
         ZStack {
             if isNoiseOn {
-                StaticView()
-                    .transition(.opacity.combined(with: .scale(scale: 1.2)).animation(.easeInOut(duration: 0.2)))
+                StaticView(noiseTrigger: $noiseTrigger)
             } else {
                 Color.black
-                    //.overlay(Text("Tap").foregroundColor(.white).font(.largeTitle))
-                    .transition(.opacity.animation(.easeInOut(duration: 0.2)))
             }
         }
         .ignoresSafeArea()
-        .onTapGesture {
-            toggleNoise()
-        }
         .onAppear {
-            prepareNoise()
-            player?.play()
+            startNoiseAutomatically()
         }
-    }
-    
-    func toggleNoise() {
-        withAnimation {
-            isNoiseOn.toggle()
-        }
-        if isNoiseOn {
-            player?.play()
-        } else {
-            player?.stop()
-        }
-    }
-    
-    func prepareNoise() {
-        guard let url = Bundle.main.url(forResource: "whitenoise", withExtension: "wav") else { return }
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-            player?.numberOfLoops = -1
-            player?.prepareToPlay()
-            
-            print("noise prepared")
-        } catch {
-            
-            print("Error loading audio: \(error)")
-        }
-    }
-}
-
-struct StaticView: View {
-    var body: some View {
-        Canvas { context, size in
-            let numLines = Int(size.height / 2)
-            for i in 0..<numLines {
-                let y = CGFloat(i * 2)
-                let randomGray = Double.random(in: 0...1)
-                context.fill(Path(CGRect(x: 0, y: y, width: size.width, height: 2)), with: .color(Color(white: randomGray)))
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 0).onEnded { _ in
+                toggleNoise()
             }
+        )
+    }
+
+    func startNoiseAutomatically() {
+        DispatchQueue.main.async {
+            forceImmediateRefresh() // 🔥 Static appears first
+            startStaticUpdateTimer() // 🔥 Start animation first
+            noiseGenerator.play() // 🔥 Then play sound
         }
-        .animation(.linear(duration: 0.1).repeatForever(autoreverses: true), value: UUID())
+    }
+
+    func toggleNoise() {
+        DispatchQueue.main.async {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true) // 🔥 Bypasses SwiftUI animation delay
+
+            if !isNoiseOn {
+                forceImmediateRefresh() // 🔥 Static appears immediately
+                startStaticUpdateTimer()
+                noiseGenerator.play() // 🔥 Sound starts after static update
+            } else {
+                noiseGenerator.stop()
+                timer?.invalidate()
+                timer = nil
+            }
+
+            UIView.performWithoutAnimation {
+                isNoiseOn.toggle()
+                noiseTrigger = UUID() // 🔥 Forces immediate UI update
+            }
+
+            CATransaction.commit()
+            CATransaction.flush() // 🔥 Forces UI to refresh *this frame*
+        }
+    }
+
+    func forceImmediateRefresh() {
+        noiseTrigger = UUID() // 🔥 Forces StaticView to refresh instantly
+    }
+
+    func startStaticUpdateTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.016, repeats: true) { _ in
+            forceImmediateRefresh() // 🔥 Matches 60 FPS screen refresh rate
+        }
     }
 }
-

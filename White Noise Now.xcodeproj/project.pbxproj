@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2508A442D74328400C2FE15 /* StaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2508A432D74328400C2FE15 /* StaticView.swift */; };
+		E2508A462D743A4700C2FE15 /* WhiteNoiseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2508A452D743A4700C2FE15 /* WhiteNoiseGenerator.swift */; };
 		E2564F112D682A4B00103AAC /* White_Noise_NowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F102D682A4B00103AAC /* White_Noise_NowApp.swift */; };
 		E2564F132D682A4B00103AAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F122D682A4B00103AAC /* ContentView.swift */; };
 		E2564F152D682A4D00103AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2564F142D682A4D00103AAC /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E2508A432D74328400C2FE15 /* StaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticView.swift; sourceTree = "<group>"; };
+		E2508A452D743A4700C2FE15 /* WhiteNoiseGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNoiseGenerator.swift; sourceTree = "<group>"; };
 		E2564F0D2D682A4B00103AAC /* White Noise Now.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "White Noise Now.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2564F102D682A4B00103AAC /* White_Noise_NowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = White_Noise_NowApp.swift; sourceTree = "<group>"; };
 		E2564F122D682A4B00103AAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			children = (
 				E2564F102D682A4B00103AAC /* White_Noise_NowApp.swift */,
 				E2564F122D682A4B00103AAC /* ContentView.swift */,
+				E2508A432D74328400C2FE15 /* StaticView.swift */,
+				E2508A452D743A4700C2FE15 /* WhiteNoiseGenerator.swift */,
 				E2564F142D682A4D00103AAC /* Assets.xcassets */,
 				E2564F162D682A4D00103AAC /* Preview Content */,
 			);
@@ -263,6 +269,8 @@
 			files = (
 				E2564F132D682A4B00103AAC /* ContentView.swift in Sources */,
 				E2564F112D682A4B00103AAC /* White_Noise_NowApp.swift in Sources */,
+				E2508A462D743A4700C2FE15 /* WhiteNoiseGenerator.swift in Sources */,
+				E2508A442D74328400C2FE15 /* StaticView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +442,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,6 +472,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
