@@ -17,6 +17,8 @@
 		E2564F2C2D682A4D00103AAC /* White_Noise_NowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F2B2D682A4D00103AAC /* White_Noise_NowUITests.swift */; };
 		E2564F2E2D682A4D00103AAC /* White_Noise_NowUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F2D2D682A4D00103AAC /* White_Noise_NowUITestsLaunchTests.swift */; };
 		E2D601822D699EA400D67E73 /* whitenoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2D601812D699EA400D67E73 /* whitenoise.wav */; };
+		E2ED58E42D75601500B933A5 /* StaticVisual.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E2ED58E32D75601500B933A5 /* StaticVisual.mp4 */; };
+		E2ED58E62D7560C800B933A5 /* StaticVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED58E52D7560C800B933A5 /* StaticVideoPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		E2564F2B2D682A4D00103AAC /* White_Noise_NowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = White_Noise_NowUITests.swift; sourceTree = "<group>"; };
 		E2564F2D2D682A4D00103AAC /* White_Noise_NowUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = White_Noise_NowUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E2D601812D699EA400D67E73 /* whitenoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whitenoise.wav; sourceTree = "<group>"; };
+		E2ED58E32D75601500B933A5 /* StaticVisual.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = StaticVisual.mp4; path = "White Noise Now/Assets.xcassets/StaticVisual.mp4"; sourceTree = "<group>"; };
+		E2ED58E52D7560C800B933A5 /* StaticVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticVideoPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 			children = (
 				E2564F0F2D682A4B00103AAC /* White Noise Now */,
 				E2D601812D699EA400D67E73 /* whitenoise.wav */,
+				E2ED58E32D75601500B933A5 /* StaticVisual.mp4 */,
 				E2564F202D682A4D00103AAC /* White Noise NowTests */,
 				E2564F2A2D682A4D00103AAC /* White Noise NowUITests */,
 				E2564F0E2D682A4B00103AAC /* Products */,
@@ -102,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				E2564F102D682A4B00103AAC /* White_Noise_NowApp.swift */,
+				E2ED58E52D7560C800B933A5 /* StaticVideoPlayer.swift */,
 				E2564F122D682A4B00103AAC /* ContentView.swift */,
 				E2508A432D74328400C2FE15 /* StaticView.swift */,
 				E2508A452D743A4700C2FE15 /* WhiteNoiseGenerator.swift */,
@@ -243,6 +249,7 @@
 				E2564F182D682A4D00103AAC /* Preview Assets.xcassets in Resources */,
 				E2564F152D682A4D00103AAC /* Assets.xcassets in Resources */,
 				E2D601822D699EA400D67E73 /* whitenoise.wav in Resources */,
+				E2ED58E42D75601500B933A5 /* StaticVisual.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +278,7 @@
 				E2564F112D682A4B00103AAC /* White_Noise_NowApp.swift in Sources */,
 				E2508A462D743A4700C2FE15 /* WhiteNoiseGenerator.swift in Sources */,
 				E2508A442D74328400C2FE15 /* StaticView.swift in Sources */,
+				E2ED58E62D7560C800B933A5 /* StaticVideoPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
