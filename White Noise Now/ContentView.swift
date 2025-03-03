@@ -1,20 +1,22 @@
 import SwiftUI
+import AVKit
 
 struct ContentView: View {
-    @State private var isNoiseOn = true // Start with noise ON
-    private var noiseGenerator = WhiteNoiseGenerator() // Keeps noise running
+    @StateObject private var player = AVPlayerWrapper() // 🔥 Keeps AVPlayer in memory
+    @State private var isNoiseOn = true // Start with video ON
 
     var body: some View {
         ZStack {
-            if isNoiseOn {
-                StaticVideoPlayer() // 🔥 Displays the static video
-            } else {
-                Color.black
+            VideoPlayer(player: player.instance)
+                .opacity(isNoiseOn ? 1 : 0) // 🔥 Hide instead of removing from hierarchy
+                .ignoresSafeArea()
+                .onAppear {
+                    player.play() // 🔥 Start video immediately upon launch
+                }
+
+            if !isNoiseOn {
+                Color.black.ignoresSafeArea()
             }
-        }
-        .ignoresSafeArea()
-        .onAppear {
-            startNoiseAutomatically()
         }
         .simultaneousGesture(
             DragGesture(minimumDistance: 0).onEnded { _ in
@@ -23,18 +25,42 @@ struct ContentView: View {
         )
     }
 
-    func startNoiseAutomatically() {
-        noiseGenerator.play() // 🔥 Start noise instantly
+    func toggleNoise() {
+        withAnimation {
+            isNoiseOn.toggle()
+        }
+        if isNoiseOn {
+            player.play() // 🔥 Instantly resume playback
+        } else {
+            player.pause() // 🔥 Pause instead of removing the player
+        }
+    }
+}
+
+// MARK: - AVPlayer Wrapper (Keeps Video Loaded in Memory)
+class AVPlayerWrapper: ObservableObject {
+    let instance: AVPlayer
+
+    init() {
+        let url = Bundle.main.url(forResource: "TV_Static_Noise_HD", withExtension: "mp4")!
+        self.instance = AVPlayer(url: url)
+        self.instance.actionAtItemEnd = .none
+
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: instance.currentItem, queue: .main) { _ in
+            self.loopVideo()
+        }
     }
 
-    func toggleNoise() {
-        DispatchQueue.main.async {
-            isNoiseOn.toggle()
-            if isNoiseOn {
-                noiseGenerator.play()
-            } else {
-                noiseGenerator.stop()
-            }
-        }
+    func play() {
+        instance.play()
+    }
+
+    func pause() {
+        instance.pause()
+    }
+
+    private func loopVideo() {
+        instance.seek(to: .zero)
+        instance.play()
     }
 }

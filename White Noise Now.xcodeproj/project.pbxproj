@@ -19,6 +19,7 @@
 		E2D601822D699EA400D67E73 /* whitenoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = E2D601812D699EA400D67E73 /* whitenoise.wav */; };
 		E2ED58E42D75601500B933A5 /* StaticVisual.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E2ED58E32D75601500B933A5 /* StaticVisual.mp4 */; };
 		E2ED58E62D7560C800B933A5 /* StaticVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED58E52D7560C800B933A5 /* StaticVideoPlayer.swift */; };
+		E2ED58E82D75662100B933A5 /* TV_Static_Noise_HD.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E2ED58E72D75662100B933A5 /* TV_Static_Noise_HD.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		E2D601812D699EA400D67E73 /* whitenoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whitenoise.wav; sourceTree = "<group>"; };
 		E2ED58E32D75601500B933A5 /* StaticVisual.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = StaticVisual.mp4; path = "White Noise Now/Assets.xcassets/StaticVisual.mp4"; sourceTree = "<group>"; };
 		E2ED58E52D7560C800B933A5 /* StaticVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticVideoPlayer.swift; sourceTree = "<group>"; };
+		E2ED58E72D75662100B933A5 /* TV_Static_Noise_HD.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = TV_Static_Noise_HD.mp4; path = "White Noise Now/Assets.xcassets/TV_Static_Noise_HD/Video Folder/TV_Static_Noise_HD.mp4"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				E2564F0F2D682A4B00103AAC /* White Noise Now */,
 				E2D601812D699EA400D67E73 /* whitenoise.wav */,
+				E2ED58E72D75662100B933A5 /* TV_Static_Noise_HD.mp4 */,
 				E2ED58E32D75601500B933A5 /* StaticVisual.mp4 */,
 				E2564F202D682A4D00103AAC /* White Noise NowTests */,
 				E2564F2A2D682A4D00103AAC /* White Noise NowUITests */,
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2564F182D682A4D00103AAC /* Preview Assets.xcassets in Resources */,
+				E2ED58E82D75662100B933A5 /* TV_Static_Noise_HD.mp4 in Resources */,
 				E2564F152D682A4D00103AAC /* Assets.xcassets in Resources */,
 				E2D601822D699EA400D67E73 /* whitenoise.wav in Resources */,
 				E2ED58E42D75601500B933A5 /* StaticVisual.mp4 in Resources */,
