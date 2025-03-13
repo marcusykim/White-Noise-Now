@@ -2,16 +2,16 @@ import SwiftUI
 import AVKit
 
 struct ContentView: View {
-    @StateObject private var player = AVPlayerWrapper() // 🔥 Keeps AVPlayer in memory
+    @StateObject private var player = AVPlayerWrapper() //  Keeps AVPlayer in memory
     @State private var isNoiseOn = true // Start with video ON
 
     var body: some View {
         ZStack {
             VideoPlayer(player: player.instance)
-                .opacity(isNoiseOn ? 1 : 0) // 🔥 Hide instead of removing from hierarchy
+                .opacity(isNoiseOn ? 1 : 0) //  Hide instead of removing from hierarchy
                 .ignoresSafeArea()
                 .onAppear {
-                    player.play() // 🔥 Start video immediately upon launch
+                    player.play() //  Start video immediately upon launch
                 }
 
             if !isNoiseOn {
@@ -30,9 +30,9 @@ struct ContentView: View {
             isNoiseOn.toggle()
         }
         if isNoiseOn {
-            player.play() // 🔥 Instantly resume playback
+            player.play() //  Instantly resume playback
         } else {
-            player.pause() // 🔥 Pause instead of removing the player
+            player.pause() //  Pause instead of removing the player
         }
     }
 }

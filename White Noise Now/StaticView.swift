@@ -12,7 +12,7 @@ struct StaticView: View {
 
                 for x in 0..<columns {
                     for y in 0..<rows {
-                        let changeProbability = Double.random(in: 0.2...1.0) // 🔥 Randomized flicker intensity
+                        let changeProbability = Double.random(in: 0.2...1.0) //  Randomized flicker intensity
                         if changeProbability > 0.5 {
                             let randomGray = Double.random(in: 0...1)
                             let rect = CGRect(x: CGFloat(x) * cellSize, y: CGFloat(y) * cellSize, width: cellSize, height: cellSize)
@@ -21,7 +21,7 @@ struct StaticView: View {
                     }
                 }
             }
-            .id(noiseTrigger) // 🔥 Instantly refreshes static
+            .id(noiseTrigger) //  Instantly refreshes static
         }
         .ignoresSafeArea()
     }
