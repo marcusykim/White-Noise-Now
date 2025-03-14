@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E235A0C92D83DC4A00710B48 /* TV_Static_Noise_HD.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E235A0C82D83DC4A00710B48 /* TV_Static_Noise_HD.mp4 */; };
 		E2508A442D74328400C2FE15 /* StaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2508A432D74328400C2FE15 /* StaticView.swift */; };
 		E2508A462D743A4700C2FE15 /* WhiteNoiseGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2508A452D743A4700C2FE15 /* WhiteNoiseGenerator.swift */; };
 		E2564F112D682A4B00103AAC /* White_Noise_NowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F102D682A4B00103AAC /* White_Noise_NowApp.swift */; };
@@ -17,7 +18,6 @@
 		E2564F2C2D682A4D00103AAC /* White_Noise_NowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F2B2D682A4D00103AAC /* White_Noise_NowUITests.swift */; };
 		E2564F2E2D682A4D00103AAC /* White_Noise_NowUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2564F2D2D682A4D00103AAC /* White_Noise_NowUITestsLaunchTests.swift */; };
 		E2ED58E62D7560C800B933A5 /* StaticVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED58E52D7560C800B933A5 /* StaticVideoPlayer.swift */; };
-		E2ED58EA2D756D9300B933A5 /* TV_Static_Noise_HD.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E2ED58E92D756D9300B933A5 /* TV_Static_Noise_HD.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E235A0C82D83DC4A00710B48 /* TV_Static_Noise_HD.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TV_Static_Noise_HD.mp4; sourceTree = "<group>"; };
 		E2508A432D74328400C2FE15 /* StaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticView.swift; sourceTree = "<group>"; };
 		E2508A452D743A4700C2FE15 /* WhiteNoiseGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNoiseGenerator.swift; sourceTree = "<group>"; };
 		E2564F0D2D682A4B00103AAC /* White Noise Now.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "White Noise Now.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,7 +52,6 @@
 		E2564F2B2D682A4D00103AAC /* White_Noise_NowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = White_Noise_NowUITests.swift; sourceTree = "<group>"; };
 		E2564F2D2D682A4D00103AAC /* White_Noise_NowUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = White_Noise_NowUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E2ED58E52D7560C800B933A5 /* StaticVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticVideoPlayer.swift; sourceTree = "<group>"; };
-		E2ED58E92D756D9300B933A5 /* TV_Static_Noise_HD.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = TV_Static_Noise_HD.mp4; path = "White Noise Now/Assets.xcassets/TV_Static_Noise_HD.mp4"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				E2564F0F2D682A4B00103AAC /* White Noise Now */,
-				E2ED58E92D756D9300B933A5 /* TV_Static_Noise_HD.mp4 */,
 				E2564F202D682A4D00103AAC /* White Noise NowTests */,
 				E2564F2A2D682A4D00103AAC /* White Noise NowUITests */,
 				E2564F0E2D682A4B00103AAC /* Products */,
@@ -109,6 +108,7 @@
 				E2508A432D74328400C2FE15 /* StaticView.swift */,
 				E2508A452D743A4700C2FE15 /* WhiteNoiseGenerator.swift */,
 				E2564F142D682A4D00103AAC /* Assets.xcassets */,
+				E235A0C82D83DC4A00710B48 /* TV_Static_Noise_HD.mp4 */,
 				E2564F162D682A4D00103AAC /* Preview Content */,
 			);
 			path = "White Noise Now";
@@ -243,8 +243,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E235A0C92D83DC4A00710B48 /* TV_Static_Noise_HD.mp4 in Resources */,
 				E2564F182D682A4D00103AAC /* Preview Assets.xcassets in Resources */,
-				E2ED58EA2D756D9300B933A5 /* TV_Static_Noise_HD.mp4 in Resources */,
 				E2564F152D682A4D00103AAC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
