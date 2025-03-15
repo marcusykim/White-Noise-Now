@@ -1,31 +1,36 @@
 import SwiftUI
 import AVKit
+import AVFoundation
 
 struct ContentView: View {
     @StateObject private var player = AVPlayerWrapper()
     @State private var isNoiseOn = true // Start with video ON
 
     var body: some View {
-        ZStack {
-            if isNoiseOn {
-                VideoPlayer(player: player.instance)
-                    .rotationEffect(.degrees(90)) // 🔥 Manually rotate video
-                    .aspectRatio(contentMode: .fill) // 🔥 Ensures video fills screen
-                    .frame(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width) // 🔥 Swap width & height
-                    .position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2) // 🔥 Center it properly
-                    .ignoresSafeArea()
-                    .onAppear {
-                        player.play()
+        GeometryReader { geometry in
+            ZStack {
+                if isNoiseOn {
+                    VideoPlayer(player: player.instance)
+                        .rotationEffect(.degrees(90)) // ✅ Rotate video 90 degrees
+                        .frame(width: geometry.size.height, height: geometry.size.width) // ✅ Swap width & height
+                        .scaleEffect(max(geometry.size.width / geometry.size.height, geometry.size.height / geometry.size.width)) // ✅ Scale to fill screen, maintain center
+                        .position(x: geometry.size.width / 2, y: geometry.size.height / 2) // ✅ Center video
+                        .ignoresSafeArea()
+                        .onAppear {
+                            player.play()
+                        }
+                } else {
+                    Color.black.ignoresSafeArea()
+                }
+
+                // ✅ Transparent overlay for global tap handling
+                Color.clear
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        toggleNoise()
                     }
-            } else {
-                Color.black.ignoresSafeArea()
             }
         }
-        .simultaneousGesture(
-            DragGesture(minimumDistance: 0).onEnded { _ in
-                toggleNoise()
-            }
-        )
     }
 
     func toggleNoise() {
@@ -40,7 +45,7 @@ struct ContentView: View {
     }
 }
 
-// MARK: - AVPlayer Wrapper (Keeps Video Loaded in Memory)
+// ✅ AVPlayerWrapper: Keeps video loaded and handles audio everywhere
 class AVPlayerWrapper: ObservableObject {
     let instance: AVPlayer
 
@@ -49,7 +54,7 @@ class AVPlayerWrapper: ObservableObject {
         self.instance = AVPlayer(url: url)
         self.instance.actionAtItemEnd = .none
 
-        // ✅ Configure Audio Session for playback in silent mode, Bluetooth, and wired headphones
+        // ✅ Ensure sound plays in silent mode, Bluetooth, AirPlay
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.allowBluetooth, .allowAirPlay])
             try AVAudioSession.sharedInstance().setActive(true)
@@ -57,6 +62,7 @@ class AVPlayerWrapper: ObservableObject {
             print("Failed to set up audio session: \(error.localizedDescription)")
         }
 
+        // ✅ Loop video infinitely
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: instance.currentItem, queue: .main) { _ in
             self.loopVideo()
         }
