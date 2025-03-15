@@ -7,7 +7,7 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            VideoPlayer(player: player.instance)
+            VideoPlayer(player: player.instance).rotationEffect(.degrees(90.0))
                 .opacity(isNoiseOn ? 1 : 0) //  Hide instead of removing from hierarchy
                 .ignoresSafeArea()
                 .onAppear {
