@@ -3,29 +3,29 @@ import AVKit
 import AVFoundation
 
 struct ContentView: View {
-    @StateObject private var playerWrapper = AVQueuePlayerWrapper() // ✅ Renamed to "playerWrapper" to avoid confusion with "instance"
+    @StateObject private var playerWrapper = AVQueuePlayerWrapper() // ✅ Perfect looping wrapper
     @State private var isNoiseOn = true // Start with noise ON
 
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 if isNoiseOn {
-                    VideoPlayer(player: playerWrapper.instance) // ✅ Access the AVQueuePlayer inside wrapper
-                        .rotationEffect(.degrees(90)) // Rotate video 90 degrees
-                        .frame(width: geometry.size.height, height: geometry.size.width) // Swap width/height
-                        .scaleEffect(max(geometry.size.width / geometry.size.height, geometry.size.height / geometry.size.width)) // Scale to fill screen
-                        .position(x: geometry.size.width / 2, y: geometry.size.height / 2) // Center video
+                    VideoPlayer(player: playerWrapper.instance) // ✅ Plays smooth looping video
+                        .rotationEffect(.degrees(90)) // Rotate 90 degrees
+                        .frame(width: geometry.size.height, height: geometry.size.width) // Fill screen
+                        .scaleEffect(max(geometry.size.width / geometry.size.height, geometry.size.height / geometry.size.width))
+                        .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                         .ignoresSafeArea()
                         .onAppear {
-                            playerWrapper.play() // ✅ Correctly calling play() on wrapper
+                            playerWrapper.play() // ✅ Start playback
                         }
                 } else {
-                    Color.black.ignoresSafeArea() // Black screen when off
+                    Color.black.ignoresSafeArea()
                 }
 
-                // Transparent overlay to handle taps
+                // ✅ Transparent overlay for tapping
                 Color.clear
-                    .contentShape(Rectangle()) // Full screen tap area
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         toggleNoise()
                     }
@@ -33,35 +33,34 @@ struct ContentView: View {
         }
     }
 
-    // Toggling playback and state
     func toggleNoise() {
         withAnimation {
             isNoiseOn.toggle()
         }
         if isNoiseOn {
-            playerWrapper.play() // ✅ Call on wrapper
+            playerWrapper.play() // ✅ Restart loop when toggled on
         } else {
-            playerWrapper.pause() // ✅ Call on wrapper
+            playerWrapper.pause() // ✅ Stop when toggled off
         }
     }
 }
 
-// Wrapper for AVQueuePlayer and smooth looping
-@MainActor // Optional but good for safety when interacting with player & UI
+// ✅ Correct AVQueuePlayer Implementation for Smooth Infinite Looping
+@MainActor
 class AVQueuePlayerWrapper: ObservableObject {
     let instance: AVQueuePlayer
-    private let looper: AVPlayerLooper
+    private var looper: AVPlayerLooper?
 
     init() {
         let url = Bundle.main.url(forResource: "TV_Static_Noise_HD", withExtension: "mp4")!
         let asset = AVAsset(url: url)
         let playerItem = AVPlayerItem(asset: asset)
 
-        // Setup AVQueuePlayer and looper for seamless looping
+        // ✅ Correct setup for perfect infinite looping
         self.instance = AVQueuePlayer()
         self.looper = AVPlayerLooper(player: instance, templateItem: playerItem)
 
-        // Setup audio session for silent mode, Bluetooth, AirPlay
+        // ✅ Ensure sound plays in silent mode, Bluetooth, AirPlay
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [.allowBluetooth, .allowAirPlay])
             try AVAudioSession.sharedInstance().setActive(true)
@@ -70,8 +69,8 @@ class AVQueuePlayerWrapper: ObservableObject {
         }
     }
 
-    // Control playback
     func play() {
+        instance.seek(to: .zero)
         instance.play()
     }
 
